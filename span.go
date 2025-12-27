@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+
 	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 

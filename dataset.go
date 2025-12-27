@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+
 	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 
