@@ -96,7 +96,7 @@ func runConfigure(args []string) {
 	fmt.Printf("  URL: %s\n", cfg.URL)
 	fmt.Printf("  Workspace: %s\n", cfg.Workspace)
 	if cfg.APIKey != "" {
-		fmt.Printf("  API Key: %s...\n", cfg.APIKey[:min(8, len(cfg.APIKey))])
+		fmt.Printf("  API Key: %d characters (hidden)\n", len(cfg.APIKey))
 	}
 }
 
