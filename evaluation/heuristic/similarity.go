@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/grokify/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-comet-ml-opik/evaluation"
 )
 
 // LevenshteinSimilarity calculates similarity based on Levenshtein distance.

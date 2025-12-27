@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/grokify/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-comet-ml-opik/evaluation"
 )
 
 // IsJSON checks if the output is valid JSON.

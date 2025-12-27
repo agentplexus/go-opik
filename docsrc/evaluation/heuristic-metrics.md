@@ -3,7 +3,7 @@
 Rule-based metrics that don't require an LLM. Fast, deterministic, and free.
 
 ```go
-import "github.com/grokify/go-comet-ml-opik/evaluation/heuristic"
+import "github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic"
 ```
 
 ## String Matching

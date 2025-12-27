@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/grokify/go-comet-ml-opik/testutil"
+	"github.com/agentplexus/go-comet-ml-opik/testutil"
 )
 
 func TestNewClient(t *testing.T) {

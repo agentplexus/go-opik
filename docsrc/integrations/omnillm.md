@@ -1,11 +1,11 @@
-# fluxllm Integration
+# omnillm Integration
 
-Integrate with [fluxllm](https://github.com/grokify/fluxllm), a unified LLM wrapper library that supports multiple providers (OpenAI, Anthropic, Bedrock, Gemini, Ollama, xAI).
+Integrate with [omnillm](https://github.com/agentplexus/omnillm), a unified LLM wrapper library that supports multiple providers (OpenAI, Anthropic, Bedrock, Gemini, Ollama, xAI).
 
 ```go
 import (
-    "github.com/grokify/fluxllm"
-    opikfluxllm "github.com/grokify/go-comet-ml-opik/integrations/fluxllm"
+    "github.com/agentplexus/omnillm"
+    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
 )
 ```
 
@@ -27,11 +27,11 @@ Wrap individual LLM calls with spans for maximum control.
 
 ```go
 import (
-    opik "github.com/grokify/go-comet-ml-opik"
-    "github.com/grokify/fluxllm"
+    opik "github.com/agentplexus/go-comet-ml-opik"
+    "github.com/agentplexus/omnillm"
 )
 
-func callLLM(ctx context.Context, client *fluxllm.ChatClient, req *fluxllm.ChatCompletionRequest) (*fluxllm.ChatCompletionResponse, error) {
+func callLLM(ctx context.Context, client *omnillm.ChatClient, req *omnillm.ChatCompletionRequest) (*omnillm.ChatCompletionResponse, error) {
     // Get current span/trace from context
     var span *opik.Span
     var err error
@@ -105,15 +105,15 @@ Use the built-in `TracingClient` wrapper for automatic tracing of all calls.
 
 ```go
 import (
-    opik "github.com/grokify/go-comet-ml-opik"
-    opikfluxllm "github.com/grokify/go-comet-ml-opik/integrations/fluxllm"
-    "github.com/grokify/fluxllm"
+    opik "github.com/agentplexus/go-comet-ml-opik"
+    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    "github.com/agentplexus/omnillm"
 )
 
 func main() {
-    // Create fluxllm client
-    client, _ := fluxllm.NewClient(fluxllm.ClientConfig{
-        Provider: fluxllm.ProviderNameOpenAI,
+    // Create omnillm client
+    client, _ := omnillm.NewClient(omnillm.ClientConfig{
+        Provider: omnillm.ProviderNameOpenAI,
         APIKey:   os.Getenv("OPENAI_API_KEY"),
     })
 
@@ -121,17 +121,17 @@ func main() {
     opikClient, _ := opik.NewClient()
 
     // Wrap with tracing
-    tracingClient := opikfluxllm.NewTracingClient(client, opikClient)
+    tracingClient := opikomnillm.NewTracingClient(client, opikClient)
 
     // Start a trace
     ctx, trace, _ := opik.StartTrace(ctx, opikClient, "my-task")
     defer trace.End(ctx)
 
     // All calls are automatically traced!
-    resp, _ := tracingClient.CreateChatCompletion(ctx, &fluxllm.ChatCompletionRequest{
+    resp, _ := tracingClient.CreateChatCompletion(ctx, &omnillm.ChatCompletionRequest{
         Model: "gpt-4o",
-        Messages: []fluxllm.Message{
-            {Role: fluxllm.RoleUser, Content: "Hello!"},
+        Messages: []omnillm.Message{
+            {Role: omnillm.RoleUser, Content: "Hello!"},
         },
     })
 
@@ -147,7 +147,7 @@ func main() {
 | `CreateChatCompletionStream` | Traced streaming completion |
 | `CreateChatCompletionWithMemory` | Traced completion with memory |
 | `Close` | Close underlying client |
-| `Client` | Access underlying fluxllm client |
+| `Client` | Access underlying omnillm client |
 
 ### Streaming Support
 
@@ -183,26 +183,26 @@ resp, _ := tracingClient.CreateChatCompletionWithMemory(ctx, "session-123", req)
 
 ## Option 3: Evaluation Provider
 
-Use fluxllm as an LLM provider for evaluation judges.
+Use omnillm as an LLM provider for evaluation judges.
 
 ```go
 import (
-    opikfluxllm "github.com/grokify/go-comet-ml-opik/integrations/fluxllm"
-    "github.com/grokify/go-comet-ml-opik/evaluation/llm"
-    "github.com/grokify/fluxllm"
+    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+    "github.com/agentplexus/omnillm"
 )
 
 func main() {
-    // Create fluxllm client with any provider
-    client, _ := fluxllm.NewClient(fluxllm.ClientConfig{
-        Provider: fluxllm.ProviderNameAnthropic,
+    // Create omnillm client with any provider
+    client, _ := omnillm.NewClient(omnillm.ClientConfig{
+        Provider: omnillm.ProviderNameAnthropic,
         APIKey:   os.Getenv("ANTHROPIC_API_KEY"),
     })
 
     // Create evaluation provider
-    provider := opikfluxllm.NewProvider(client,
-        opikfluxllm.WithModel("claude-sonnet-4-20250514"),
-        opikfluxllm.WithTemperature(0.0),
+    provider := opikomnillm.NewProvider(client,
+        opikomnillm.WithModel("claude-sonnet-4-20250514"),
+        opikomnillm.WithTemperature(0.0),
     )
 
     // Use with evaluation metrics
@@ -244,7 +244,7 @@ func main() {
 
 ## Supported Providers
 
-fluxllm supports these providers, all work with the Opik integration:
+omnillm supports these providers, all work with the Opik integration:
 
 | Provider | Config |
 |----------|--------|
@@ -264,19 +264,19 @@ import (
     "context"
     "fmt"
 
-    opik "github.com/grokify/go-comet-ml-opik"
-    "github.com/grokify/go-comet-ml-opik/evaluation"
-    "github.com/grokify/go-comet-ml-opik/evaluation/llm"
-    opikfluxllm "github.com/grokify/go-comet-ml-opik/integrations/fluxllm"
-    "github.com/grokify/fluxllm"
+    opik "github.com/agentplexus/go-comet-ml-opik"
+    "github.com/agentplexus/go-comet-ml-opik/evaluation"
+    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    "github.com/agentplexus/omnillm"
 )
 
 func main() {
     ctx := context.Background()
 
-    // Create fluxllm client
-    client, _ := fluxllm.NewClient(fluxllm.ClientConfig{
-        Provider: fluxllm.ProviderNameOpenAI,
+    // Create omnillm client
+    client, _ := omnillm.NewClient(omnillm.ClientConfig{
+        Provider: omnillm.ProviderNameOpenAI,
         APIKey:   os.Getenv("OPENAI_API_KEY"),
     })
 
@@ -284,11 +284,11 @@ func main() {
     opikClient, _ := opik.NewClient()
 
     // OPTION 2: Tracing wrapper for automatic tracing
-    tracingClient := opikfluxllm.NewTracingClient(client, opikClient)
+    tracingClient := opikomnillm.NewTracingClient(client, opikClient)
 
     // OPTION 3: Evaluation provider for LLM judges
-    evalProvider := opikfluxllm.NewProvider(client,
-        opikfluxllm.WithModel("gpt-4o"),
+    evalProvider := opikomnillm.NewProvider(client,
+        opikomnillm.WithModel("gpt-4o"),
     )
 
     // Start trace
@@ -296,9 +296,9 @@ func main() {
     defer trace.End(ctx)
 
     // Generate response (automatically traced)
-    resp, _ := tracingClient.CreateChatCompletion(ctx, &fluxllm.ChatCompletionRequest{
+    resp, _ := tracingClient.CreateChatCompletion(ctx, &omnillm.ChatCompletionRequest{
         Model:    "gpt-4o",
-        Messages: []fluxllm.Message{{Role: fluxllm.RoleUser, Content: "What is 2+2?"}},
+        Messages: []omnillm.Message{{Role: omnillm.RoleUser, Content: "What is 2+2?"}},
     })
 
     answer := resp.Choices[0].Message.Content

@@ -4,8 +4,8 @@ Use an LLM to evaluate outputs that can't be measured with simple rules.
 
 ```go
 import (
-    "github.com/grokify/go-comet-ml-opik/evaluation/llm"
-    "github.com/grokify/go-comet-ml-opik/integrations/openai"
+    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+    "github.com/agentplexus/go-comet-ml-opik/integrations/openai"
 )
 ```
 

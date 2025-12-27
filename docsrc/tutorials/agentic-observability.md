@@ -1,6 +1,6 @@
 # Agentic Observability: Integrating Opik with Google ADK and Eino
 
-This tutorial demonstrates how to add LLM observability to agentic Go applications using the go-comet-ml-opik SDK. We'll use a real-world case study based on the [stats-agent-team](https://github.com/grokify/stats-agent-team) project, which implements a multi-agent system for statistics research and verification.
+This tutorial demonstrates how to add LLM observability to agentic Go applications using the go-comet-ml-opik SDK. We'll use a real-world case study based on the [stats-agent-team](https://github.com/agentplexus/stats-agent-team) project, which implements a multi-agent system for statistics research and verification.
 
 ## Overview
 
@@ -89,7 +89,7 @@ Wrap your ADK agent's LLM calls with Opik traces:
 
 ```go
 import (
-    opik "github.com/grokify/go-comet-ml-opik"
+    opik "github.com/agentplexus/go-comet-ml-opik"
 )
 
 type TracedSynthesisAgent struct {
@@ -466,7 +466,7 @@ import (
     "context"
     "log"
 
-    opik "github.com/grokify/go-comet-ml-opik"
+    opik "github.com/agentplexus/go-comet-ml-opik"
 )
 
 func main() {

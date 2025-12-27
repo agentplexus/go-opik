@@ -1,4 +1,4 @@
-package fluxllm
+package omnillm
 
 import (
 	"context"
@@ -6,21 +6,21 @@ import (
 	"strings"
 	"time"
 
-	fluxllm "github.com/grokify/fluxllm"
-	"github.com/grokify/fluxllm/provider"
+	"github.com/agentplexus/omnillm"
+	"github.com/agentplexus/omnillm/provider"
 
-	opik "github.com/grokify/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-comet-ml-opik"
 )
 
-// TracingClient wraps a gollm.ChatClient with automatic Opik tracing.
+// TracingClient wraps an omnillm.ChatClient with automatic Opik tracing.
 type TracingClient struct {
-	client      *fluxllm.ChatClient
+	client      *omnillm.ChatClient
 	opikClient  *opik.Client
 	spanOptions []opik.SpanOption
 }
 
 // NewTracingClient creates a new tracing client wrapper.
-func NewTracingClient(client *fluxllm.ChatClient, opikClient *opik.Client, opts ...opik.SpanOption) *TracingClient {
+func NewTracingClient(client *omnillm.ChatClient, opikClient *opik.Client, opts ...opik.SpanOption) *TracingClient {
 	return &TracingClient{
 		client:      client,
 		opikClient:  opikClient,
@@ -33,7 +33,7 @@ func (t *TracingClient) CreateChatCompletion(ctx context.Context, req *provider.
 	// Prepare span options
 	opts := append([]opik.SpanOption{
 		opik.WithSpanType(opik.SpanTypeLLM),
-		opik.WithSpanProvider("gollm"),
+		opik.WithSpanProvider("omnillm"),
 		opik.WithSpanInput(requestToMap(req)),
 	}, t.spanOptions...)
 
@@ -46,9 +46,9 @@ func (t *TracingClient) CreateChatCompletion(ctx context.Context, req *provider.
 	var err error
 
 	if parentSpan := opik.SpanFromContext(ctx); parentSpan != nil {
-		span, err = parentSpan.Span(ctx, "gollm.chat", opts...)
+		span, err = parentSpan.Span(ctx, "omnillm.chat", opts...)
 	} else if trace := opik.TraceFromContext(ctx); trace != nil {
-		span, err = trace.Span(ctx, "gollm.chat", opts...)
+		span, err = trace.Span(ctx, "omnillm.chat", opts...)
 	}
 
 	// Execute request
@@ -93,7 +93,7 @@ func (t *TracingClient) CreateChatCompletionStream(ctx context.Context, req *pro
 	// Prepare span options
 	opts := append([]opik.SpanOption{
 		opik.WithSpanType(opik.SpanTypeLLM),
-		opik.WithSpanProvider("gollm"),
+		opik.WithSpanProvider("omnillm"),
 		opik.WithSpanInput(requestToMap(req)),
 	}, t.spanOptions...)
 
@@ -106,9 +106,9 @@ func (t *TracingClient) CreateChatCompletionStream(ctx context.Context, req *pro
 	var err error
 
 	if parentSpan := opik.SpanFromContext(ctx); parentSpan != nil {
-		span, err = parentSpan.Span(ctx, "gollm.chat.stream", opts...)
+		span, err = parentSpan.Span(ctx, "omnillm.chat.stream", opts...)
 	} else if trace := opik.TraceFromContext(ctx); trace != nil {
-		span, err = trace.Span(ctx, "gollm.chat.stream", opts...)
+		span, err = trace.Span(ctx, "omnillm.chat.stream", opts...)
 	}
 
 	// Create the stream
@@ -137,7 +137,7 @@ func (t *TracingClient) CreateChatCompletionWithMemory(ctx context.Context, sess
 	// Prepare span options
 	opts := append([]opik.SpanOption{
 		opik.WithSpanType(opik.SpanTypeLLM),
-		opik.WithSpanProvider("gollm"),
+		opik.WithSpanProvider("omnillm"),
 		opik.WithSpanInput(requestToMap(req)),
 		opik.WithSpanMetadata(map[string]any{"session_id": sessionID}),
 	}, t.spanOptions...)
@@ -151,9 +151,9 @@ func (t *TracingClient) CreateChatCompletionWithMemory(ctx context.Context, sess
 	var err error
 
 	if parentSpan := opik.SpanFromContext(ctx); parentSpan != nil {
-		span, err = parentSpan.Span(ctx, "gollm.chat.memory", opts...)
+		span, err = parentSpan.Span(ctx, "omnillm.chat.memory", opts...)
 	} else if trace := opik.TraceFromContext(ctx); trace != nil {
-		span, err = trace.Span(ctx, "gollm.chat.memory", opts...)
+		span, err = trace.Span(ctx, "omnillm.chat.memory", opts...)
 	}
 
 	// Execute request
@@ -194,8 +194,8 @@ func (t *TracingClient) Close() error {
 	return t.client.Close()
 }
 
-// Client returns the underlying gollm.ChatClient.
-func (t *TracingClient) Client() *fluxllm.ChatClient {
+// Client returns the underlying omnillm.ChatClient.
+func (t *TracingClient) Client() *omnillm.ChatClient {
 	return t.client
 }
 

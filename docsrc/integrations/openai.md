@@ -3,7 +3,7 @@
 Auto-trace OpenAI API calls and use OpenAI as an evaluation judge.
 
 ```go
-import "github.com/grokify/go-comet-ml-opik/integrations/openai"
+import "github.com/agentplexus/go-comet-ml-opik/integrations/openai"
 ```
 
 ## Auto-Tracing

@@ -792,11 +792,11 @@ Only **2 warnings** - expected duplication in similar API patterns
 ### Test Results
 ```
 $ go test ./...
-ok  github.com/grokify/go-comet-ml-opik          0.070s
-ok  github.com/grokify/go-comet-ml-opik/evaluation
-ok  github.com/grokify/go-comet-ml-opik/evaluation/heuristic
-ok  github.com/grokify/go-comet-ml-opik/evaluation/llm
-ok  github.com/grokify/go-comet-ml-opik/integrations/...
+ok  github.com/agentplexus/go-comet-ml-opik          0.070s
+ok  github.com/agentplexus/go-comet-ml-opik/evaluation
+ok  github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic
+ok  github.com/agentplexus/go-comet-ml-opik/evaluation/llm
+ok  github.com/agentplexus/go-comet-ml-opik/integrations/...
 ```
 
 **All tests passing** across 11 packages
@@ -854,7 +854,7 @@ Test Suite: Complete. <break time="300ms"/>
 MkDocs Documentation: Complete. <break time="300ms"/>
 CI/CD Pipeline: Complete. <break time="300ms"/>
 Agentic Tutorial: Complete. <break time="500ms"/>
-All deliverables are available in the repository at github.com/grokify/go-comet-ml-opik. <break time="800ms"/>
+All deliverables are available in the repository at github.com/agentplexus/go-comet-ml-opik. <break time="800ms"/>
 -->
 
 # Project Deliverables 📦
@@ -870,7 +870,7 @@ All deliverables are available in the repository at github.com/grokify/go-comet-
 | CI/CD Pipeline | ✅ Complete |
 | Agentic Tutorial | ✅ Complete |
 
-**Repository**: `github.com/grokify/go-comet-ml-opik`
+**Repository**: `github.com/agentplexus/go-comet-ml-opik`
 
 ---
 
@@ -907,23 +907,23 @@ The SDK is released under the MIT License. <break time="800ms"/>
 
 <!--
 Here are the important links. <break time="500ms"/>
-The repository is at github.com/grokify/go-comet-ml-opik. <break time="500ms"/>
+The repository is at github.com/agentplexus/go-comet-ml-opik. <break time="500ms"/>
 The official Opik project is at github.com/comet-ml/opik. <break time="500ms"/>
-And documentation is available at grokify.github.io/go-comet-ml-opik. <break time="600ms"/>
-You can find me on GitHub at @grokify. <break time="800ms"/>
+And documentation is available at agentplexus.github.io/go-comet-ml-opik. <break time="600ms"/>
+You can find me on GitHub at @agentplexus. <break time="800ms"/>
 -->
 
 # Resources 🔗
 
 ### Links
 
-- **Repository**: github.com/grokify/go-comet-ml-opik
+- **Repository**: github.com/agentplexus/go-comet-ml-opik
 - **Opik**: github.com/comet-ml/opik
-- **Documentation**: grokify.github.io/go-comet-ml-opik
+- **Documentation**: agentplexus.github.io/go-comet-ml-opik
 
 ### Contact
 
-- GitHub: @grokify
+- GitHub: @agentplexus
 
 ---
 

@@ -1,24 +1,24 @@
-package fluxllm
+package omnillm
 
 import (
 	"context"
 
-	fluxllm "github.com/grokify/fluxllm"
-	"github.com/grokify/fluxllm/provider"
+	"github.com/agentplexus/omnillm"
+	"github.com/agentplexus/omnillm/provider"
 
-	"github.com/grokify/go-comet-ml-opik/evaluation/llm"
+	"github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
 )
 
-// Provider implements llm.Provider using a gollm.ChatClient.
+// Provider implements llm.Provider using an omnillm.ChatClient.
 type Provider struct {
-	client      *fluxllm.ChatClient
+	client      *omnillm.ChatClient
 	model       string
 	temperature float64
 	maxTokens   int
 }
 
-// NewProvider creates a new evaluation provider using gollm.
-func NewProvider(client *fluxllm.ChatClient, opts ...Option) *Provider {
+// NewProvider creates a new evaluation provider using omnillm.
+func NewProvider(client *omnillm.ChatClient, opts ...Option) *Provider {
 	p := &Provider{
 		client: client,
 	}
@@ -54,9 +54,9 @@ func WithMaxTokens(max int) Option {
 	}
 }
 
-// Complete sends a chat completion request using gollm.
+// Complete sends a chat completion request using omnillm.
 func (p *Provider) Complete(ctx context.Context, req llm.CompletionRequest) (*llm.CompletionResponse, error) {
-	// Convert llm.Message to gollm provider.Message
+	// Convert llm.Message to omnillm provider.Message
 	messages := make([]provider.Message, len(req.Messages))
 	for i, m := range req.Messages {
 		messages[i] = provider.Message{
@@ -66,14 +66,14 @@ func (p *Provider) Complete(ctx context.Context, req llm.CompletionRequest) (*ll
 	}
 
 	// Build request
-	gollmReq := &provider.ChatCompletionRequest{
+	omnillmReq := &provider.ChatCompletionRequest{
 		Model:    req.Model,
 		Messages: messages,
 	}
 
 	// Use provider defaults if not specified in request
-	if gollmReq.Model == "" && p.model != "" {
-		gollmReq.Model = p.model
+	if omnillmReq.Model == "" && p.model != "" {
+		omnillmReq.Model = p.model
 	}
 
 	temp := req.Temperature
@@ -81,7 +81,7 @@ func (p *Provider) Complete(ctx context.Context, req llm.CompletionRequest) (*ll
 		temp = p.temperature
 	}
 	if temp != 0 {
-		gollmReq.Temperature = &temp
+		omnillmReq.Temperature = &temp
 	}
 
 	maxTokens := req.MaxTokens
@@ -89,11 +89,11 @@ func (p *Provider) Complete(ctx context.Context, req llm.CompletionRequest) (*ll
 		maxTokens = p.maxTokens
 	}
 	if maxTokens != 0 {
-		gollmReq.MaxTokens = &maxTokens
+		omnillmReq.MaxTokens = &maxTokens
 	}
 
 	// Make the call
-	resp, err := p.client.CreateChatCompletion(ctx, gollmReq)
+	resp, err := p.client.CreateChatCompletion(ctx, omnillmReq)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (p *Provider) Complete(ctx context.Context, req llm.CompletionRequest) (*ll
 
 // Name returns the provider name.
 func (p *Provider) Name() string {
-	return "gollm"
+	return "omnillm"
 }
 
 // DefaultModel returns the configured default model.

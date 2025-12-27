@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/grokify/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 
 // Version is the SDK version.

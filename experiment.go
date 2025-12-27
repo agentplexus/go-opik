@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/google/uuid"
-	"github.com/grokify/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 
 // Experiment represents an experiment in Opik for evaluating models.

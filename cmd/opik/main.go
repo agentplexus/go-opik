@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	opik "github.com/grokify/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-comet-ml-opik"
 )
 
 func main() {

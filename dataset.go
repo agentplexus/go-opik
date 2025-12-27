@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/grokify/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 
 // Dataset represents a dataset in Opik for storing test data.

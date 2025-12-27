@@ -1,9 +1,9 @@
-package fluxllm
+package omnillm
 
 import (
 	"testing"
 
-	"github.com/grokify/fluxllm/provider"
+	"github.com/agentplexus/omnillm/provider"
 )
 
 func TestNewProvider(t *testing.T) {
@@ -35,8 +35,8 @@ func TestNewProvider(t *testing.T) {
 
 func TestProviderName(t *testing.T) {
 	p := NewProvider(nil)
-	if p.Name() != "gollm" {
-		t.Errorf("Name() = %q, want %q", p.Name(), "gollm")
+	if p.Name() != "omnillm" {
+		t.Errorf("Name() = %q, want %q", p.Name(), "omnillm")
 	}
 }
 

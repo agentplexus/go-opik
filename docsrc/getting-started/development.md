@@ -202,6 +202,6 @@ make docs-serve
 
 ## Getting Help
 
-- [GitHub Issues](https://github.com/grokify/go-comet-ml-opik/issues)
+- [GitHub Issues](https://github.com/agentplexus/go-comet-ml-opik/issues)
 - [Opik Documentation](https://www.comet.com/docs/opik/)
 - [ogen Documentation](https://ogen.dev/)

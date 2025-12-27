@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/grokify/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-comet-ml-opik/internal/api"
 )
 
 // Trace represents an execution trace in Opik.

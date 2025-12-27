@@ -23,7 +23,7 @@ import (
     "context"
     "log"
 
-    opik "github.com/grokify/go-comet-ml-opik"
+    opik "github.com/agentplexus/go-comet-ml-opik"
 )
 
 func main() {
@@ -61,7 +61,7 @@ func main() {
 ## Installation
 
 ```bash
-go get github.com/grokify/go-comet-ml-opik
+go get github.com/agentplexus/go-comet-ml-opik
 ```
 
 ## Next Steps

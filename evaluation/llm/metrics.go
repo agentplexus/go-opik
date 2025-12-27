@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/grokify/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-comet-ml-opik/evaluation"
 )
 
 // GEval implements the G-EVAL framework for LLM evaluation.

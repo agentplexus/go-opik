@@ -3,7 +3,7 @@
 Add tracing to HTTP handlers and clients.
 
 ```go
-import "github.com/grokify/go-comet-ml-opik/middleware"
+import "github.com/agentplexus/go-comet-ml-opik/middleware"
 ```
 
 ## Server Middleware

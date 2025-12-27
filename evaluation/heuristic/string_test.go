@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/grokify/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-comet-ml-opik/evaluation"
 )
 
 func TestEquals(t *testing.T) {
