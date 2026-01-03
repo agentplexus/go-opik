@@ -3,6 +3,7 @@ package opik
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -85,7 +86,7 @@ func (c *authHTTPClient) Do(req *http.Request) (*http.Response, error) {
 	// Add SDK version headers
 	req.Header.Set("X-OPIK-DEBUG-SDK-VERSION", Version)
 	req.Header.Set("X-OPIK-DEBUG-SDK-LANG", "go")
-	req.Header.Set("Accept-Encoding", "gzip")
+	// Note: Not requesting gzip as the ogen client doesn't auto-decompress
 
 	return c.client.Do(req)
 }
@@ -127,12 +128,20 @@ func (c *Client) Trace(ctx context.Context, name string, opts ...TraceOption) (*
 		projectName = c.projectName
 	}
 
-	// Generate trace ID
-	traceUUID := uuid.New()
+	// Generate trace ID (must be UUID v7 for Opik API)
+	traceUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate trace UUID: %w", err)
+	}
 	traceID := traceUUID.String()
 
 	// Prepare input/output/metadata as JSON
-	var inputJSON, outputJSON, metadataJSON api.JsonListStringWrite
+	// Note: JsonListStringWrite is raw JSON bytes - use null for empty values
+	nullJSON := api.JsonListStringWrite([]byte("null"))
+	inputJSON := nullJSON
+	outputJSON := nullJSON
+	metadataJSON := nullJSON
+
 	if options.input != nil {
 		data, _ := json.Marshal(options.input)
 		inputJSON = api.JsonListStringWrite(data)
@@ -163,7 +172,7 @@ func (c *Client) Trace(ctx context.Context, name string, opts ...TraceOption) (*
 	}
 
 	// Send to API
-	err := c.apiClient.CreateTraces(ctx, api.NewOptTraceBatchWrite(req))
+	err = c.apiClient.CreateTraces(ctx, api.NewOptTraceBatchWrite(req))
 	if err != nil {
 		return nil, err
 	}
@@ -310,6 +319,19 @@ type TraceInfo struct {
 	EndTime   time.Time
 }
 
+// SpanInfo represents basic span information.
+type SpanInfo struct {
+	ID           string
+	TraceID      string
+	ParentSpanID string
+	Name         string
+	Type         string
+	StartTime    time.Time
+	EndTime      time.Time
+	Model        string
+	Provider     string
+}
+
 // ListTraces lists recent traces.
 func (c *Client) ListTraces(ctx context.Context, page, size int) ([]*TraceInfo, error) {
 	resp, err := c.apiClient.GetTracesByProject(ctx, api.GetTracesByProjectParams{
@@ -339,4 +361,56 @@ func (c *Client) ListTraces(ctx context.Context, page, size int) ([]*TraceInfo, 
 	}
 
 	return traces, nil
+}
+
+// ListSpans lists spans for a specific trace.
+func (c *Client) ListSpans(ctx context.Context, traceID string, page, size int) ([]*SpanInfo, error) {
+	traceUUID, err := uuid.Parse(traceID)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := c.apiClient.GetSpansByProject(ctx, api.GetSpansByProjectParams{
+		ProjectName: api.NewOptString(c.projectName),
+		TraceID:     api.NewOptUUID(traceUUID),
+		Page:        api.NewOptInt32(int32(page)), //nolint:gosec // G115: page values are bounded by API limits
+		Size:        api.NewOptInt32(int32(size)), //nolint:gosec // G115: size values are bounded by API limits
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	spans := make([]*SpanInfo, 0, len(resp.Content))
+	for _, s := range resp.Content {
+		span := &SpanInfo{
+			StartTime: s.StartTime,
+		}
+		if s.ID.Set {
+			span.ID = s.ID.Value.String()
+		}
+		if s.TraceID.Set {
+			span.TraceID = s.TraceID.Value.String()
+		}
+		if s.ParentSpanID.Set {
+			span.ParentSpanID = s.ParentSpanID.Value.String()
+		}
+		if s.Name.Set {
+			span.Name = s.Name.Value
+		}
+		if s.Type.Set {
+			span.Type = string(s.Type.Value)
+		}
+		if s.EndTime.Set {
+			span.EndTime = s.EndTime.Value
+		}
+		if s.Model.Set {
+			span.Model = s.Model.Value
+		}
+		if s.Provider.Set {
+			span.Provider = s.Provider.Value
+		}
+		spans = append(spans, span)
+	}
+
+	return spans, nil
 }

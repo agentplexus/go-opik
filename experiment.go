@@ -3,6 +3,7 @@ package opik
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"github.com/google/uuid"
 
@@ -115,7 +116,10 @@ func (c *Client) CreateExperiment(ctx context.Context, datasetName string, opts 
 		opt(options)
 	}
 
-	experimentUUID := uuid.New()
+	experimentUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate experiment UUID: %w", err)
+	}
 
 	var metadataJSON api.JsonListStringWrite
 	if len(options.metadata) > 0 {
@@ -290,7 +294,10 @@ func (e *Experiment) LogItem(ctx context.Context, datasetItemID, traceID string,
 		return err
 	}
 
-	itemUUID := uuid.New()
+	itemUUID, err := uuid.NewV7()
+	if err != nil {
+		return fmt.Errorf("failed to generate experiment item UUID: %w", err)
+	}
 
 	var inputJSON, outputJSON api.JsonListString
 	if options.input != nil {

@@ -3,6 +3,7 @@ package opik
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -107,13 +108,17 @@ func (s *Span) End(ctx context.Context, opts ...SpanOption) error {
 		return err
 	}
 
-	var outputJSON api.JsonListString
+	// IMPORTANT: JsonListString fields must be set to valid JSON (including "null")
+	// An empty JsonListString produces malformed JSON in the generated encoder.
+	nullJSON := api.JsonListString([]byte("null"))
+
+	outputJSON := nullJSON
 	if s.output != nil {
 		data, _ := json.Marshal(s.output)
 		outputJSON = api.JsonListString(data)
 	}
 
-	var metadataJSON api.JsonListString
+	metadataJSON := nullJSON
 	if len(s.metadata) > 0 {
 		data, _ := json.Marshal(s.metadata)
 		metadataJSON = api.JsonListString(data)
@@ -125,6 +130,7 @@ func (s *Span) End(ctx context.Context, opts ...SpanOption) error {
 		Update: api.SpanUpdate{
 			TraceID:  traceUUID,
 			EndTime:  api.NewOptDateTime(endTime),
+			Input:    nullJSON, // Required field, must be valid JSON
 			Output:   outputJSON,
 			Metadata: metadataJSON,
 			Model:    api.NewOptString(s.model),
@@ -169,13 +175,17 @@ func (s *Span) Update(ctx context.Context, opts ...SpanOption) error {
 		s.provider = options.provider
 	}
 
-	var outputJSON api.JsonListString
+	// IMPORTANT: JsonListString fields must be set to valid JSON (including "null")
+	// An empty JsonListString produces malformed JSON in the generated encoder.
+	nullJSON := api.JsonListString([]byte("null"))
+
+	outputJSON := nullJSON
 	if s.output != nil {
 		data, _ := json.Marshal(s.output)
 		outputJSON = api.JsonListString(data)
 	}
 
-	var metadataJSON api.JsonListString
+	metadataJSON := nullJSON
 	if len(s.metadata) > 0 {
 		data, _ := json.Marshal(s.metadata)
 		metadataJSON = api.JsonListString(data)
@@ -185,6 +195,7 @@ func (s *Span) Update(ctx context.Context, opts ...SpanOption) error {
 		Ids: []uuid.UUID{spanUUID},
 		Update: api.SpanUpdate{
 			TraceID:  traceUUID,
+			Input:    nullJSON, // Required field, must be valid JSON
 			Output:   outputJSON,
 			Metadata: metadataJSON,
 			Model:    api.NewOptString(s.model),
@@ -237,8 +248,11 @@ func (c *Client) createSpan(ctx context.Context, traceID, parentSpanID, name str
 		opt(options)
 	}
 
-	// Generate span ID
-	spanUUID := uuid.New()
+	// Generate span ID (must be UUID v7 for Opik API)
+	spanUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate span UUID: %w", err)
+	}
 	spanID := spanUUID.String()
 	traceUUID, err := uuid.Parse(traceID)
 	if err != nil {
@@ -246,7 +260,12 @@ func (c *Client) createSpan(ctx context.Context, traceID, parentSpanID, name str
 	}
 
 	// Prepare input/output/metadata as JSON
-	var inputJSON, outputJSON, metadataJSON api.JsonListStringWrite
+	// Note: JsonListStringWrite is raw JSON bytes - use null for empty values
+	nullJSON := api.JsonListStringWrite([]byte("null"))
+	inputJSON := nullJSON
+	outputJSON := nullJSON
+	metadataJSON := nullJSON
+
 	if options.input != nil {
 		data, _ := json.Marshal(options.input)
 		inputJSON = api.JsonListStringWrite(data)
@@ -267,17 +286,18 @@ func (c *Client) createSpan(ctx context.Context, traceID, parentSpanID, name str
 
 	// Create span request
 	spanWrite := api.SpanWrite{
-		ID:        api.NewOptUUID(spanUUID),
-		TraceID:   api.NewOptUUID(traceUUID),
-		Name:      api.NewOptString(name),
-		Type:      api.NewOptSpanWriteType(spanType),
-		StartTime: startTime,
-		Input:     inputJSON,
-		Output:    outputJSON,
-		Metadata:  metadataJSON,
-		Tags:      options.tags,
-		Model:     api.NewOptString(options.model),
-		Provider:  api.NewOptString(options.provider),
+		ID:          api.NewOptUUID(spanUUID),
+		ProjectName: api.NewOptString(c.ProjectName()),
+		TraceID:     api.NewOptUUID(traceUUID),
+		Name:        api.NewOptString(name),
+		Type:        api.NewOptSpanWriteType(spanType),
+		StartTime:   startTime,
+		Input:       inputJSON,
+		Output:      outputJSON,
+		Metadata:    metadataJSON,
+		Tags:        options.tags,
+		Model:       api.NewOptString(options.model),
+		Provider:    api.NewOptString(options.provider),
 	}
 
 	if parentSpanID != "" {

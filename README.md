@@ -5,8 +5,11 @@
 [![Go Report Card][goreport-svg]][goreport-url]
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
+[![Version][version-svg]][version-url]
 
 Go SDK for [Opik](https://github.com/comet-ml/opik) - an open-source LLM observability platform by Comet ML.
+
+**Current Version: v0.4.0** - See [Release Notes](RELEASE_NOTES_v0.4.0.md)
 
 ## Installation
 
@@ -159,6 +162,22 @@ ctx, span2, _ := opik.StartSpan(ctx, "span-2") // Automatically nested under spa
 // Get current trace/span from context
 currentTrace := opik.TraceFromContext(ctx)
 currentSpan := opik.SpanFromContext(ctx)
+```
+
+### Listing Traces and Spans
+
+```go
+// List recent traces
+traces, _ := client.ListTraces(ctx, page, size)
+for _, t := range traces {
+    fmt.Printf("Trace: %s (ID: %s)\n", t.Name, t.ID)
+}
+
+// List spans for a specific trace
+spans, _ := client.ListSpans(ctx, traceID, page, size)
+for _, s := range spans {
+    fmt.Printf("Span: %s (Type: %s, Model: %s)\n", s.Name, s.Type, s.Model)
+}
 ```
 
 ### Distributed Tracing
@@ -604,3 +623,5 @@ MIT License - see [LICENSE](LICENSE) for details.
  [license-url]: https://github.com/agentplexus/go-comet-ml-opik/blob/master/LICENSE
  [used-by-svg]: https://sourcegraph.com/github.com/agentplexus/go-comet-ml-opik/-/badge.svg
  [used-by-url]: https://sourcegraph.com/github.com/agentplexus/go-comet-ml-opik?badge
+ [version-svg]: https://img.shields.io/github/v/release/agentplexus/go-comet-ml-opik
+ [version-url]: https://github.com/agentplexus/go-comet-ml-opik/releases

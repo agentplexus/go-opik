@@ -2,6 +2,7 @@ package opik
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 
@@ -168,7 +169,10 @@ func (c *Client) CreatePrompt(ctx context.Context, name string, opts ...PromptOp
 		opt(options)
 	}
 
-	promptUUID := uuid.New()
+	promptUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate prompt UUID: %w", err)
+	}
 
 	req := api.PromptWrite{
 		ID:                api.NewOptUUID(promptUUID),
@@ -428,7 +432,10 @@ func (p *Prompt) CreateVersion(ctx context.Context, template string, opts ...Pro
 		return nil, err
 	}
 
-	versionUUID := uuid.New()
+	versionUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate prompt version UUID: %w", err)
+	}
 
 	req := api.CreatePromptVersionDetail{
 		Name: p.name,

@@ -3,6 +3,7 @@ package opik
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
@@ -79,7 +80,10 @@ func (c *Client) CreateDataset(ctx context.Context, name string, opts ...Dataset
 		opt(options)
 	}
 
-	datasetUUID := uuid.New()
+	datasetUUID, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate dataset UUID: %w", err)
+	}
 
 	req := api.DatasetWrite{
 		ID:          api.NewOptUUID(datasetUUID),
@@ -283,7 +287,10 @@ func (d *Dataset) InsertItems(ctx context.Context, items []map[string]any, opts 
 
 	apiItems := make([]api.DatasetItemWrite, 0, len(items))
 	for _, item := range items {
-		itemUUID := uuid.New()
+		itemUUID, err := uuid.NewV7()
+		if err != nil {
+			return fmt.Errorf("failed to generate dataset item UUID: %w", err)
+		}
 		apiItems = append(apiItems, api.DatasetItemWrite{
 			ID:     api.NewOptUUID(itemUUID),
 			Source: api.DatasetItemWriteSourceSdk,

@@ -81,13 +81,17 @@ func (t *Trace) End(ctx context.Context, opts ...TraceOption) error {
 		return err
 	}
 
-	var outputJSON api.JsonListString
+	// IMPORTANT: JsonListString fields must be set to valid JSON (including "null")
+	// An empty JsonListString produces malformed JSON in the generated encoder.
+	nullJSON := api.JsonListString([]byte("null"))
+
+	outputJSON := nullJSON
 	if t.output != nil {
 		data, _ := json.Marshal(t.output)
 		outputJSON = api.JsonListString(data)
 	}
 
-	var metadataJSON api.JsonListString
+	metadataJSON := nullJSON
 	if len(t.metadata) > 0 {
 		data, _ := json.Marshal(t.metadata)
 		metadataJSON = api.JsonListString(data)
@@ -98,6 +102,7 @@ func (t *Trace) End(ctx context.Context, opts ...TraceOption) error {
 		Ids: []uuid.UUID{traceUUID},
 		Update: api.TraceUpdate{
 			EndTime:  api.NewOptDateTime(endTime),
+			Input:    nullJSON, // Required field, must be valid JSON
 			Output:   outputJSON,
 			Metadata: metadataJSON,
 		},
@@ -129,13 +134,17 @@ func (t *Trace) Update(ctx context.Context, opts ...TraceOption) error {
 		t.output = options.output
 	}
 
-	var outputJSON api.JsonListString
+	// IMPORTANT: JsonListString fields must be set to valid JSON (including "null")
+	// An empty JsonListString produces malformed JSON in the generated encoder.
+	nullJSON := api.JsonListString([]byte("null"))
+
+	outputJSON := nullJSON
 	if t.output != nil {
 		data, _ := json.Marshal(t.output)
 		outputJSON = api.JsonListString(data)
 	}
 
-	var metadataJSON api.JsonListString
+	metadataJSON := nullJSON
 	if len(t.metadata) > 0 {
 		data, _ := json.Marshal(t.metadata)
 		metadataJSON = api.JsonListString(data)
@@ -144,6 +153,7 @@ func (t *Trace) Update(ctx context.Context, opts ...TraceOption) error {
 	req := api.TraceBatchUpdate{
 		Ids: []uuid.UUID{traceUUID},
 		Update: api.TraceUpdate{
+			Input:    nullJSON, // Required field, must be valid JSON
 			Output:   outputJSON,
 			Metadata: metadataJSON,
 			Tags:     options.tags,
