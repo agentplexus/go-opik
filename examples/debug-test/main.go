@@ -16,8 +16,8 @@ import (
 
 	"github.com/google/uuid"
 
-	opik "github.com/agentplexus/go-comet-ml-opik"
-	"github.com/agentplexus/go-comet-ml-opik/internal/api"
+	opik "github.com/agentplexus/go-opik"
+	"github.com/agentplexus/go-opik/internal/api"
 )
 
 func main() {

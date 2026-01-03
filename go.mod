@@ -1,4 +1,4 @@
-module github.com/agentplexus/go-comet-ml-opik
+module github.com/agentplexus/go-opik
 
 go 1.24.11
 

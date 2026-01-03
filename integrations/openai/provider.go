@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+	"github.com/agentplexus/go-opik/evaluation/llm"
 )
 
 const (

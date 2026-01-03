@@ -14,7 +14,7 @@ Go SDK for [Opik](https://github.com/comet-ml/opik) - an open-source LLM observa
 ## Installation
 
 ```bash
-go get github.com/agentplexus/go-comet-ml-opik
+go get github.com/agentplexus/go-opik
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ import (
     "context"
     "log"
 
-    "github.com/agentplexus/go-comet-ml-opik"
+    "github.com/agentplexus/go-opik"
 )
 
 func main() {
@@ -72,7 +72,7 @@ import (
     "context"
 
     "github.com/agentplexus/omniobserve/llmops"
-    _ "github.com/agentplexus/go-comet-ml-opik/llmops" // Register Opik provider
+    _ "github.com/agentplexus/go-opik/llmops" // Register Opik provider
 )
 
 func main() {
@@ -367,7 +367,7 @@ prompts, _ := client.ListPrompts(ctx, 1, 100)
 ### HTTP Middleware
 
 ```go
-import "github.com/agentplexus/go-comet-ml-opik/middleware"
+import "github.com/agentplexus/go-opik/middleware"
 
 // Wrap HTTP handlers with automatic tracing
 handler := middleware.TracingMiddleware(client, "api-request")(yourHandler)
@@ -436,8 +436,8 @@ dataURL := attachment.ToDataURL()
 
 ```go
 import (
-    "github.com/agentplexus/go-comet-ml-opik/evaluation"
-    "github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic"
+    "github.com/agentplexus/go-opik/evaluation"
+    "github.com/agentplexus/go-opik/evaluation/heuristic"
 )
 
 // Create metrics
@@ -464,8 +464,8 @@ fmt.Printf("Average score: %.2f\n", result.AverageScore())
 
 ```go
 import (
-    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
-    "github.com/agentplexus/go-comet-ml-opik/integrations/openai"
+    "github.com/agentplexus/go-opik/evaluation/llm"
+    "github.com/agentplexus/go-opik/integrations/openai"
 )
 
 // Create LLM provider
@@ -509,7 +509,7 @@ score := geval.Score(ctx, input)
 ### OpenAI
 
 ```go
-import "github.com/agentplexus/go-comet-ml-opik/integrations/openai"
+import "github.com/agentplexus/go-opik/integrations/openai"
 
 // Create provider for evaluation
 provider := openai.NewProvider(
@@ -529,7 +529,7 @@ httpClient := openai.TracingHTTPClient(opikClient)
 ### Anthropic
 
 ```go
-import "github.com/agentplexus/go-comet-ml-opik/integrations/anthropic"
+import "github.com/agentplexus/go-opik/integrations/anthropic"
 
 // Create provider for evaluation
 provider := anthropic.NewProvider(
@@ -548,7 +548,7 @@ httpClient := anthropic.TracingHTTPClient(opikClient)
 
 ```bash
 # Install CLI
-go install github.com/agentplexus/go-comet-ml-opik/cmd/opik@latest
+go install github.com/agentplexus/go-opik/cmd/opik@latest
 
 # Configure
 opik configure -api-key=your-key -workspace=your-workspace
@@ -660,17 +660,17 @@ MIT License - see [LICENSE](LICENSE) for details.
 - [Opik Python SDK](https://github.com/comet-ml/opik/tree/main/sdks/python) - Official Python SDK
 - [Opik Documentation](https://www.comet.com/docs/opik/) - Official documentation
 
- [build-status-svg]: https://github.com/agentplexus/go-comet-ml-opik/actions/workflows/ci.yaml/badge.svg?branch=main
- [build-status-url]: https://github.com/agentplexus/go-comet-ml-opik/actions/workflows/ci.yaml
- [lint-status-svg]: https://github.com/agentplexus/go-comet-ml-opik/actions/workflows/lint.yaml/badge.svg?branch=main
- [lint-status-url]: https://github.com/agentplexus/go-comet-ml-opik/actions/workflows/lint.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/go-comet-ml-opik
- [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/go-comet-ml-opik
- [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/go-comet-ml-opik
- [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/go-comet-ml-opik
+ [build-status-svg]: https://github.com/agentplexus/go-opik/actions/workflows/ci.yaml/badge.svg?branch=main
+ [build-status-url]: https://github.com/agentplexus/go-opik/actions/workflows/ci.yaml
+ [lint-status-svg]: https://github.com/agentplexus/go-opik/actions/workflows/lint.yaml/badge.svg?branch=main
+ [lint-status-url]: https://github.com/agentplexus/go-opik/actions/workflows/lint.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/go-opik
+ [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/go-opik
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/go-opik
+ [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/go-opik
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/agentplexus/go-comet-ml-opik/blob/master/LICENSE
- [used-by-svg]: https://sourcegraph.com/github.com/agentplexus/go-comet-ml-opik/-/badge.svg
- [used-by-url]: https://sourcegraph.com/github.com/agentplexus/go-comet-ml-opik?badge
- [version-svg]: https://img.shields.io/github/v/release/agentplexus/go-comet-ml-opik
- [version-url]: https://github.com/agentplexus/go-comet-ml-opik/releases
+ [license-url]: https://github.com/agentplexus/go-opik/blob/master/LICENSE
+ [used-by-svg]: https://sourcegraph.com/github.com/agentplexus/go-opik/-/badge.svg
+ [used-by-url]: https://sourcegraph.com/github.com/agentplexus/go-opik?badge
+ [version-svg]: https://img.shields.io/github/v/release/agentplexus/go-opik
+ [version-url]: https://github.com/agentplexus/go-opik/releases

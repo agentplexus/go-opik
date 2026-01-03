@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	opik "github.com/agentplexus/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-opik"
 )
 
 // TracingTransport wraps an http.RoundTripper to automatically trace Anthropic API calls.

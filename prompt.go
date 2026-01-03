@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/agentplexus/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-opik/internal/api"
 )
 
 // Prompt represents a prompt template in Opik.

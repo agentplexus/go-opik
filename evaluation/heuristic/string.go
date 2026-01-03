@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-opik/evaluation"
 )
 
 // Equals checks if the output exactly matches the expected value.

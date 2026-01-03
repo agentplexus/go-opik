@@ -1,16 +1,16 @@
-// Package llmops provides an omniobserve/llmops adapter for go-comet-ml-opik.
+// Package llmops provides an omniobserve/llmops adapter for go-opik.
 //
 // Import this package to register the Opik provider:
 //
-//	import _ "github.com/agentplexus/go-comet-ml-opik/llmops"
+//	import _ "github.com/agentplexus/go-opik/llmops"
 //
 // Then open it:
 //
 //	provider, err := llmops.Open("opik", llmops.WithAPIKey("..."))
 //
-// The standalone go-comet-ml-opik SDK can still be used directly without this package:
+// The standalone go-opik SDK can still be used directly without this package:
 //
-//	import opik "github.com/agentplexus/go-comet-ml-opik"
+//	import opik "github.com/agentplexus/go-opik"
 //	client, err := opik.NewClient(opik.WithAPIKey("..."))
 package llmops
 
@@ -18,7 +18,7 @@ import (
 	"context"
 	"time"
 
-	opik "github.com/agentplexus/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-opik"
 	"github.com/agentplexus/omniobserve/llmops"
 )
 

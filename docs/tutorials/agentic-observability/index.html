@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-comet-ml-opik/tutorials/agentic-observability/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-opik/tutorials/agentic-observability/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Agentic Observability - Go Opik SDK</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Agentic Observability";
         var mkdocs_page_input_path = "tutorials/agentic-observability.md";
-        var mkdocs_page_url = "/go-comet-ml-opik/tutorials/agentic-observability/";
+        var mkdocs_page_url = "/go-opik/tutorials/agentic-observability/";
       </script>
     
     <!--[if lt IE 9]>
@@ -182,7 +182,7 @@
           <li class="breadcrumb-item">Tutorials</li>
       <li class="breadcrumb-item active">Agentic Observability</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/agentplexus/go-comet-ml-opik/edit/master/docs/tutorials/agentic-observability.md">Edit on agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik/edit/master/docs/tutorials/agentic-observability.md">Edit on agentplexus/go-opik</a>
     </li>
   </ul>
   <hr/>
@@ -191,7 +191,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="agentic-observability-integrating-opik-with-google-adk-and-eino">Agentic Observability: Integrating Opik with Google ADK and Eino<a class="headerlink" href="#agentic-observability-integrating-opik-with-google-adk-and-eino" title="Permanent link">&para;</a></h1>
-<p>This tutorial demonstrates how to add LLM observability to agentic Go applications using the go-comet-ml-opik SDK. We'll use a real-world case study based on the <a href="https://github.com/agentplexus/stats-agent-team">stats-agent-team</a> project, which implements a multi-agent system for statistics research and verification.</p>
+<p>This tutorial demonstrates how to add LLM observability to agentic Go applications using the go-opik SDK. We'll use a real-world case study based on the <a href="https://github.com/agentplexus/stats-agent-team">stats-agent-team</a> project, which implements a multi-agent system for statistics research and verification.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Modern AI applications increasingly use agentic architectures where multiple specialized agents collaborate to complete complex tasks. Observability is critical for:</p>
 <ul>
@@ -266,7 +266,7 @@ func NewSynthesisAgent(llmModel model.LLM) (*SynthesisAgent, error) {
 <h3 id="12-adding-opik-tracing-to-adk-agents">1.2 Adding Opik Tracing to ADK Agents<a class="headerlink" href="#12-adding-opik-tracing-to-adk-agents" title="Permanent link">&para;</a></h3>
 <p>Wrap your ADK agent's LLM calls with Opik traces:</p>
 <pre><code class="language-go">import (
-    opik &quot;github.com/agentplexus/go-comet-ml-opik&quot;
+    opik &quot;github.com/agentplexus/go-opik&quot;
 )
 
 type TracedSynthesisAgent struct {
@@ -621,7 +621,7 @@ import (
     &quot;context&quot;
     &quot;log&quot;
 
-    opik &quot;github.com/agentplexus/go-comet-ml-opik&quot;
+    opik &quot;github.com/agentplexus/go-opik&quot;
 )
 
 func main() {
@@ -808,7 +808,7 @@ span.AddFeedbackScore(ctx, &quot;quality&quot;, 0.8, &quot;Good extraction but m
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/agentplexus/go-comet-ml-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-opik</a>
         </span>
     
     

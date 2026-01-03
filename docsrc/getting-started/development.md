@@ -13,7 +13,7 @@ Before contributing to the SDK, ensure you have the following installed:
 ## Project Structure
 
 ```
-go-comet-ml-opik/
+go-opik/
 ├── internal/api/           # ogen-generated API client (DO NOT EDIT)
 ├── integrations/           # LLM provider integrations
 │   ├── openai/
@@ -202,6 +202,6 @@ make docs-serve
 
 ## Getting Help
 
-- [GitHub Issues](https://github.com/agentplexus/go-comet-ml-opik/issues)
+- [GitHub Issues](https://github.com/agentplexus/go-opik/issues)
 - [Opik Documentation](https://www.comet.com/docs/opik/)
 - [ogen Documentation](https://ogen.dev/)

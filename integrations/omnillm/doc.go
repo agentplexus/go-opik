@@ -14,8 +14,8 @@
 //
 //	import (
 //	    "github.com/agentplexus/omnillm"
-//	    opik "github.com/agentplexus/go-comet-ml-opik"
-//	    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+//	    opik "github.com/agentplexus/go-opik"
+//	    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
 //	)
 //
 //	// Create omnillm client
@@ -46,8 +46,8 @@
 //
 //	import (
 //	    "github.com/agentplexus/omnillm"
-//	    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
-//	    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+//	    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
+//	    "github.com/agentplexus/go-opik/evaluation/llm"
 //	)
 //
 //	// Create omnillm client

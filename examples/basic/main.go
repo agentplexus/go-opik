@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	opik "github.com/agentplexus/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-opik"
 )
 
 func main() {

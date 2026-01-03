@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/agentplexus/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-opik/internal/api"
 )
 
 // Version is the SDK version.

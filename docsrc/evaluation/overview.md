@@ -24,8 +24,8 @@ evaluation/
 
 ```go
 import (
-    "github.com/agentplexus/go-comet-ml-opik/evaluation"
-    "github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic"
+    "github.com/agentplexus/go-opik/evaluation"
+    "github.com/agentplexus/go-opik/evaluation/heuristic"
 )
 
 // Create metrics

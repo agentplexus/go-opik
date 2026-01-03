@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-opik/evaluation"
 )
 
 func TestMessage(t *testing.T) {

@@ -6,7 +6,7 @@ import (
 	"github.com/agentplexus/omnillm"
 	"github.com/agentplexus/omnillm/provider"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+	"github.com/agentplexus/go-opik/evaluation/llm"
 )
 
 // Provider implements llm.Provider using an omnillm.ChatClient.

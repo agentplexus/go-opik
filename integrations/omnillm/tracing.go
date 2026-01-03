@@ -9,7 +9,7 @@ import (
 	"github.com/agentplexus/omnillm"
 	"github.com/agentplexus/omnillm/provider"
 
-	opik "github.com/agentplexus/go-comet-ml-opik"
+	opik "github.com/agentplexus/go-opik"
 )
 
 // TracingClient wraps an omnillm.ChatClient with automatic Opik tracing.

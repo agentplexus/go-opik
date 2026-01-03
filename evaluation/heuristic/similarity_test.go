@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-opik/evaluation"
 )
 
 const tolerance = 0.001

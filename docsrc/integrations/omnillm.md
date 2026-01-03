@@ -5,7 +5,7 @@ Integrate with [omnillm](https://github.com/agentplexus/omnillm), a unified LLM 
 ```go
 import (
     "github.com/agentplexus/omnillm"
-    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
 )
 ```
 
@@ -27,7 +27,7 @@ Wrap individual LLM calls with spans for maximum control.
 
 ```go
 import (
-    opik "github.com/agentplexus/go-comet-ml-opik"
+    opik "github.com/agentplexus/go-opik"
     "github.com/agentplexus/omnillm"
 )
 
@@ -105,8 +105,8 @@ Use the built-in `TracingClient` wrapper for automatic tracing of all calls.
 
 ```go
 import (
-    opik "github.com/agentplexus/go-comet-ml-opik"
-    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    opik "github.com/agentplexus/go-opik"
+    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
     "github.com/agentplexus/omnillm"
 )
 
@@ -187,8 +187,8 @@ Use omnillm as an LLM provider for evaluation judges.
 
 ```go
 import (
-    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
-    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
+    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
+    "github.com/agentplexus/go-opik/evaluation/llm"
     "github.com/agentplexus/omnillm"
 )
 
@@ -264,10 +264,10 @@ import (
     "context"
     "fmt"
 
-    opik "github.com/agentplexus/go-comet-ml-opik"
-    "github.com/agentplexus/go-comet-ml-opik/evaluation"
-    "github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
-    opikomnillm "github.com/agentplexus/go-comet-ml-opik/integrations/omnillm"
+    opik "github.com/agentplexus/go-opik"
+    "github.com/agentplexus/go-opik/evaluation"
+    "github.com/agentplexus/go-opik/evaluation/llm"
+    opikomnillm "github.com/agentplexus/go-opik/integrations/omnillm"
     "github.com/agentplexus/omnillm"
 )
 

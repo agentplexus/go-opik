@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-comet-ml-opik/getting-started/testing/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-opik/getting-started/testing/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Testing - Go Opik SDK</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Testing";
         var mkdocs_page_input_path = "getting-started/testing.md";
-        var mkdocs_page_url = "/go-comet-ml-opik/getting-started/testing/";
+        var mkdocs_page_url = "/go-opik/getting-started/testing/";
       </script>
     
     <!--[if lt IE 9]>
@@ -186,7 +186,7 @@
           <li class="breadcrumb-item">Getting Started</li>
       <li class="breadcrumb-item active">Testing</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/agentplexus/go-comet-ml-opik/edit/master/docs/getting-started/testing.md">Edit on agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik/edit/master/docs/getting-started/testing.md">Edit on agentplexus/go-opik</a>
     </li>
   </ul>
   <hr/>
@@ -207,10 +207,10 @@
 </code></pre>
 <h3 id="run-specific-test-packages">Run Specific Test Packages<a class="headerlink" href="#run-specific-test-packages" title="Permanent link">&para;</a></h3>
 <pre><code class="language-bash"># Core SDK tests (config, context)
-go test github.com/agentplexus/go-comet-ml-opik -v
+go test github.com/agentplexus/go-opik -v
 
 # Evaluation heuristic metrics
-go test github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic -v
+go test github.com/agentplexus/go-opik/evaluation/heuristic -v
 </code></pre>
 <h2 id="api-key-requirements">API Key Requirements<a class="headerlink" href="#api-key-requirements" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
@@ -254,8 +254,8 @@ go test github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic -v
 <h2 id="test-coverage">Test Coverage<a class="headerlink" href="#test-coverage" title="Permanent link">&para;</a></h2>
 <h3 id="core-sdk-config_testgo-context_testgo">Core SDK (<code>config_test.go</code>, <code>context_test.go</code>)<a class="headerlink" href="#core-sdk-config_testgo-context_testgo" title="Permanent link">&para;</a></h3>
 <p>Tests for configuration management and context propagation:</p>
-<pre><code class="language-bash">go test github.com/agentplexus/go-comet-ml-opik -v -run TestConfig
-go test github.com/agentplexus/go-comet-ml-opik -v -run TestContext
+<pre><code class="language-bash">go test github.com/agentplexus/go-opik -v -run TestConfig
+go test github.com/agentplexus/go-opik -v -run TestContext
 </code></pre>
 <p><strong>Config tests cover:</strong></p>
 <ul>
@@ -278,7 +278,7 @@ go test github.com/agentplexus/go-comet-ml-opik -v -run TestContext
 </ul>
 <h3 id="heuristic-metrics-evaluationheuristic">Heuristic Metrics (<code>evaluation/heuristic/</code>)<a class="headerlink" href="#heuristic-metrics-evaluationheuristic" title="Permanent link">&para;</a></h3>
 <p>Tests for string and similarity metrics:</p>
-<pre><code class="language-bash">go test github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic -v
+<pre><code class="language-bash">go test github.com/agentplexus/go-opik/evaluation/heuristic -v
 </code></pre>
 <p><strong>String metric tests (<code>string_test.go</code>):</strong></p>
 <ul>
@@ -435,7 +435,7 @@ go mod tidy
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/agentplexus/go-comet-ml-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-opik</a>
         </span>
     
     

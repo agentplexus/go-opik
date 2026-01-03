@@ -7,13 +7,13 @@
 ## Install the SDK
 
 ```bash
-go get github.com/agentplexus/go-comet-ml-opik
+go get github.com/agentplexus/go-opik
 ```
 
 ## Install the CLI (Optional)
 
 ```bash
-go install github.com/agentplexus/go-comet-ml-opik/cmd/opik@latest
+go install github.com/agentplexus/go-opik/cmd/opik@latest
 ```
 
 ## Verify Installation
@@ -24,7 +24,7 @@ package main
 import (
     "fmt"
 
-    opik "github.com/agentplexus/go-comet-ml-opik"
+    opik "github.com/agentplexus/go-opik"
 )
 
 func main() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-comet-ml-opik/integrations/omnillm/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://agentplexus.github.io/go-opik/integrations/omnillm/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>omnillm - Go Opik SDK</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "omnillm";
         var mkdocs_page_input_path = "integrations/omnillm.md";
-        var mkdocs_page_url = "/go-comet-ml-opik/integrations/omnillm/";
+        var mkdocs_page_url = "/go-opik/integrations/omnillm/";
       </script>
     
     <!--[if lt IE 9]>
@@ -164,7 +164,7 @@
           <li class="breadcrumb-item">Integrations</li>
       <li class="breadcrumb-item active">omnillm</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/agentplexus/go-comet-ml-opik/edit/master/docs/integrations/omnillm.md">Edit on agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik/edit/master/docs/integrations/omnillm.md">Edit on agentplexus/go-opik</a>
     </li>
   </ul>
   <hr/>
@@ -176,7 +176,7 @@
 <p>Integrate with <a href="https://github.com/agentplexus/omnillm">omnillm</a>, a unified LLM wrapper library that supports multiple providers (OpenAI, Anthropic, Bedrock, Gemini, Ollama, xAI).</p>
 <pre><code class="language-go">import (
     &quot;github.com/agentplexus/omnillm&quot;
-    opikomnillm &quot;github.com/agentplexus/go-comet-ml-opik/integrations/omnillm&quot;
+    opikomnillm &quot;github.com/agentplexus/go-opik/integrations/omnillm&quot;
 )
 </code></pre>
 <h2 id="three-integration-options">Three Integration Options<a class="headerlink" href="#three-integration-options" title="Permanent link">&para;</a></h2>
@@ -211,7 +211,7 @@
 <h2 id="option-1-manual-span-wrapping">Option 1: Manual Span Wrapping<a class="headerlink" href="#option-1-manual-span-wrapping" title="Permanent link">&para;</a></h2>
 <p>Wrap individual LLM calls with spans for maximum control.</p>
 <pre><code class="language-go">import (
-    opik &quot;github.com/agentplexus/go-comet-ml-opik&quot;
+    opik &quot;github.com/agentplexus/go-opik&quot;
     &quot;github.com/agentplexus/omnillm&quot;
 )
 
@@ -284,8 +284,8 @@ func callLLM(ctx context.Context, client *omnillm.ChatClient, req *omnillm.ChatC
 <h2 id="option-2-tracing-wrapper">Option 2: Tracing Wrapper<a class="headerlink" href="#option-2-tracing-wrapper" title="Permanent link">&para;</a></h2>
 <p>Use the built-in <code>TracingClient</code> wrapper for automatic tracing of all calls.</p>
 <pre><code class="language-go">import (
-    opik &quot;github.com/agentplexus/go-comet-ml-opik&quot;
-    opikomnillm &quot;github.com/agentplexus/go-comet-ml-opik/integrations/omnillm&quot;
+    opik &quot;github.com/agentplexus/go-opik&quot;
+    opikomnillm &quot;github.com/agentplexus/go-opik/integrations/omnillm&quot;
     &quot;github.com/agentplexus/omnillm&quot;
 )
 
@@ -376,8 +376,8 @@ resp, _ := tracingClient.CreateChatCompletionWithMemory(ctx, &quot;session-123&q
 <h2 id="option-3-evaluation-provider">Option 3: Evaluation Provider<a class="headerlink" href="#option-3-evaluation-provider" title="Permanent link">&para;</a></h2>
 <p>Use omnillm as an LLM provider for evaluation judges.</p>
 <pre><code class="language-go">import (
-    opikomnillm &quot;github.com/agentplexus/go-comet-ml-opik/integrations/omnillm&quot;
-    &quot;github.com/agentplexus/go-comet-ml-opik/evaluation/llm&quot;
+    opikomnillm &quot;github.com/agentplexus/go-opik/integrations/omnillm&quot;
+    &quot;github.com/agentplexus/go-opik/evaluation/llm&quot;
     &quot;github.com/agentplexus/omnillm&quot;
 )
 
@@ -487,10 +487,10 @@ import (
     &quot;context&quot;
     &quot;fmt&quot;
 
-    opik &quot;github.com/agentplexus/go-comet-ml-opik&quot;
-    &quot;github.com/agentplexus/go-comet-ml-opik/evaluation&quot;
-    &quot;github.com/agentplexus/go-comet-ml-opik/evaluation/llm&quot;
-    opikomnillm &quot;github.com/agentplexus/go-comet-ml-opik/integrations/omnillm&quot;
+    opik &quot;github.com/agentplexus/go-opik&quot;
+    &quot;github.com/agentplexus/go-opik/evaluation&quot;
+    &quot;github.com/agentplexus/go-opik/evaluation/llm&quot;
+    opikomnillm &quot;github.com/agentplexus/go-opik/integrations/omnillm&quot;
     &quot;github.com/agentplexus/omnillm&quot;
 )
 
@@ -568,7 +568,7 @@ func main() {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/agentplexus/go-comet-ml-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-comet-ml-opik</a>
+          <a href="https://github.com/agentplexus/go-opik" class="fa fa-code-fork" style="color: #fcfcfc"> agentplexus/go-opik</a>
         </span>
     
     

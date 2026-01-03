@@ -100,13 +100,13 @@ mermaid.initialize({
 <!-- _paginate: false -->
 
 <!--
-Welcome to Building go-comet-ml-opik. <break time="500ms"/>
+Welcome to Building go-opik. <break time="500ms"/>
 A Go SDK for LLM Observability. <break time="700ms"/>
 This is an AI-Assisted Development Case Study, <break time="400ms"/>
 where we built an entire SDK using Claude Opus 4.5 with Claude Code. <break time="800ms"/>
 -->
 
-# Building go-comet-ml-opik
+# Building go-opik
 ## A Go SDK for LLM Observability
 
 **An AI-Assisted Development Case Study**
@@ -206,7 +206,7 @@ and test utilities including a mock server and matchers. <break time="800ms"/>
 # Architecture Overview 🏗️
 
 ```
-go-comet-ml-opik/
+go-opik/
 ├── *.go                    # Core SDK (client, trace, span, config, etc.)
 ├── cmd/opik/               # CLI tool
 ├── evaluation/
@@ -779,11 +779,11 @@ Only **2 warnings** - expected duplication in similar API patterns
 ### Test Results
 ```
 $ go test ./...
-ok  github.com/agentplexus/go-comet-ml-opik          0.070s
-ok  github.com/agentplexus/go-comet-ml-opik/evaluation
-ok  github.com/agentplexus/go-comet-ml-opik/evaluation/heuristic
-ok  github.com/agentplexus/go-comet-ml-opik/evaluation/llm
-ok  github.com/agentplexus/go-comet-ml-opik/integrations/...
+ok  github.com/agentplexus/go-opik          0.070s
+ok  github.com/agentplexus/go-opik/evaluation
+ok  github.com/agentplexus/go-opik/evaluation/heuristic
+ok  github.com/agentplexus/go-opik/evaluation/llm
+ok  github.com/agentplexus/go-opik/integrations/...
 ```
 
 **All tests passing** across 11 packages
@@ -841,7 +841,7 @@ Test Suite: Complete. <break time="300ms"/>
 MkDocs Documentation: Complete. <break time="300ms"/>
 CI/CD Pipeline: Complete. <break time="300ms"/>
 Agentic Tutorial: Complete. <break time="500ms"/>
-All deliverables are available in the repository at github.com/agentplexus/go-comet-ml-opik. <break time="800ms"/>
+All deliverables are available in the repository at github.com/agentplexus/go-opik. <break time="800ms"/>
 -->
 
 # Project Deliverables 📦
@@ -857,7 +857,7 @@ All deliverables are available in the repository at github.com/agentplexus/go-co
 | CI/CD Pipeline | ✅ Complete |
 | Agentic Tutorial | ✅ Complete |
 
-**Repository**: `github.com/agentplexus/go-comet-ml-opik`
+**Repository**: `github.com/agentplexus/go-opik`
 
 ---
 
@@ -894,9 +894,9 @@ The SDK is released under the MIT License. <break time="800ms"/>
 
 <!--
 Here are the important links. <break time="500ms"/>
-The repository is at github.com/agentplexus/go-comet-ml-opik. <break time="500ms"/>
+The repository is at github.com/agentplexus/go-opik. <break time="500ms"/>
 The official Opik project is at github.com/comet-ml/opik. <break time="500ms"/>
-And documentation is available at agentplexus.github.io/go-comet-ml-opik. <break time="600ms"/>
+And documentation is available at agentplexus.github.io/go-opik. <break time="600ms"/>
 You can find me on GitHub at @agentplexus. <break time="800ms"/>
 -->
 
@@ -904,9 +904,9 @@ You can find me on GitHub at @agentplexus. <break time="800ms"/>
 
 ### Links
 
-- **Repository**: github.com/agentplexus/go-comet-ml-opik
+- **Repository**: github.com/agentplexus/go-opik
 - **Opik**: github.com/comet-ml/opik
-- **Documentation**: agentplexus.github.io/go-comet-ml-opik
+- **Documentation**: agentplexus.github.io/go-opik
 
 ### Contact
 
@@ -916,14 +916,14 @@ You can find me on GitHub at @agentplexus. <break time="800ms"/>
 
 <!--
 Thank you for joining this presentation. <break time="500ms"/>
-go-comet-ml-opik: A Go SDK for LLM Observability. <break time="600ms"/>
+go-opik: A Go SDK for LLM Observability. <break time="600ms"/>
 Built with Claude Opus 4.5 and Claude Code. <break time="800ms"/>
 Thanks for watching! <break time="800ms"/>
 -->
 
 # Thank You 🙏
 
-## go-comet-ml-opik
+## go-opik
 
 **A Go SDK for LLM Observability**
 

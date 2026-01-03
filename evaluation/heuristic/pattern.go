@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation"
+	"github.com/agentplexus/go-opik/evaluation"
 )
 
 // RegexMatch checks if the output matches a regular expression.

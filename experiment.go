@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/agentplexus/go-comet-ml-opik/internal/api"
+	"github.com/agentplexus/go-opik/internal/api"
 )
 
 // Experiment represents an experiment in Opik for evaluating models.

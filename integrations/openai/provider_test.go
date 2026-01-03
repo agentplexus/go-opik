@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/agentplexus/go-comet-ml-opik/evaluation/llm"
-	"github.com/agentplexus/go-comet-ml-opik/testutil"
+	"github.com/agentplexus/go-opik/evaluation/llm"
+	"github.com/agentplexus/go-opik/testutil"
 )
 
 func TestNewProvider(t *testing.T) {
